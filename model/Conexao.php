@@ -1,18 +1,31 @@
 <?php
+
+	/**
+	 * <b>Conexao:</b>
+	 * Essa é uma classe que tem como objetivo realizar a conexão com o banco de dados.
+	 * @author Emersson cardim
+	 * @copyright (c) 2020, Emersson C. Mota
+	 * @access public
+	 * 
+	 */
 	class Conexao
 	{
-
+		/**@var object Instância da classe PDO */
 		public static $pdo;
 		
 		private function __construct()
 		{
 
 		}
+		/**
+		 * <b>Buscar conexão</b>
+		 * irá tentar realizar a conexão com o banco de dados.
+		 * @return object Instância da classe PDO
+		 */
 		
-		//Faz a conexão com o banco de dados
 		public static function getConexao()
 		{	
-			if(!isset(self::$pdo)){
+			if (!isset(self::$pdo)) {
 				try {
 					self::$pdo = new PDO('mysql:host=localhost; dbname=desafio_iboss', 'root', ''); 
 					self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

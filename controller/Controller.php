@@ -1,5 +1,13 @@
 <?php
-
+    /**
+	 * <b>Controller:</b>
+	 * Essa é uma classe que tem como objetivo realizar controle 
+     * das requisições feitas pelo usuario na aplicação.
+	 * @author Emersson cardim
+	 * @copyright (c) 2020, Emersson C. Mota
+	 * @access public
+	 * 
+	 */
     include_once 'ProdutoController.php';
     include_once 'CategoriaController.php';
     include_once 'LogController.php';
@@ -7,8 +15,11 @@
 
     class Controller
     {
+        /**@var object Instância da classe produtoController */
         private $produtoController;
+        /**@var object Instância da classe categoriaController */
         private $categoriaController;
+        /**@var object Instância da classe logController */
         private $logController;
         
         public function __construct()
@@ -18,11 +29,20 @@
             $this->logController = new LogController();
         }
         
+        /**
+         * <b>Home:</b>
+         * Realizará a chamada para página inicial da aplicação
+         */
         public function home()
         {
             require_once 'view/home.php';
         }
 
+        /**
+         * <b>Produtos:</b>
+         * Realizará a chamada para página de exibição dos produtos e 
+         * irá controlar as requisições referentes ao produto
+         */
         public function produtos()
         {
             if (isset($_REQUEST["metodo"])){
@@ -56,12 +76,14 @@
             }
         }
 
+        /**
+         * <b>Categorias:</b>
+         * Realizará a chamada para página de exibição das categorias e 
+         * irá controlar as requisições referentes a categoria
+         */
         public function categorias()
         {
-            if (isset($_REQUEST["metodo"])){
-                $metodo = $_REQUEST["metodo"];
-            }
-            if (isset($_REQUEST["metodo"])){
+            if (isset($_REQUEST["metodo"])) {
                 $metodo = $_REQUEST["metodo"];
 
                 switch ($metodo) {
@@ -92,9 +114,13 @@
             }
         }
 
+        /**
+         * <b>Log:</b>
+         * Realizará a chamada para página de exibição dos logs de ações
+         */
         public function log()
         {
-            if (isset($_REQUEST["metodo"])){
+            if (isset($_REQUEST["metodo"])) {
                 $metodo = $_REQUEST["metodo"];
                 
                 switch ($metodo) {

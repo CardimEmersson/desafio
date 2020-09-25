@@ -1,15 +1,33 @@
 <?php
+    /**
+	 * <b>Produto:</b>
+	 * Essa é uma classe que tem como objetivo realizar a manipulação dos dados 
+     * da tabela produto do banco de dados, elas herda funções da classe pai chamada Model.
+	 * @author Emersson cardim
+	 * @copyright (c) 2020, Emersson C. Mota
+	 * @access public
+	 * 
+	 */
     require_once 'Model.php';
+   
     class Produto extends Model
     {
+        /**@var int Código do produto */
         private $codigo;
+        /**@var string Nome do produto */
         private $nome;
+        /**@var string Nome da imagem do produto */
         private $url_imagem;
+        /**@var float Preço do produto *///TODO verificar o tipo
         private $preco;
+        /**@var string Descrição do produto */
         private $descricao;
+        /**@var int Quantidade de produtos */
         private $quantidade;
+        /**@var object Códigos das categorias do produto*/
         private $categoria;
-        
+
+        /**@var object Instância da conexão */
         public $pdo;
 
         public function __construct()
@@ -20,57 +38,84 @@
                 $this->mensagem = $e->getMessage();
             }
         }
-        // GETTERS e SETTERS
-        public function getCodigo(){
+        /**@return int Código do produto*/
+        public function getCodigo()
+        {
             return $this->codigo;
         }
-        public function setCodigo($codigo){
+        /**@param int atribuir a variável codigo*/
+        public function setCodigo($codigo)
+        {
             $this->codigo = $codigo;
         }
-        
-        public function getNome(){
+        /**@return string Nome do produto*/
+        public function getNome()
+        {
             return $this->nome;
         }
-        public function setNome($nome){
+        /**@param string atribuir a variável nome*/
+        public function setNome($nome)
+        {
             $this->nome = $nome;
         }
-
-        public function getImagem(){
+        /**@return int Nome da imagem do produto*/
+        public function getImagem()
+        {
             return $this->url_imagem;
         }
-        public function setImagem($imagem){
+        /**@param string atribuir a variável url_imagem*/
+        public function setImagem($imagem)
+        {
             $this->url_imagem = $imagem;
         }
-
-        public function getPreco(){
+        /**@return float Preço do produto*/
+        public function getPreco()
+        {
             return $this->preco;
         }
-        public function setPreco($preco){
+        /**@param float atribuir a variável preco*///TODO verificar tipo
+        public function setPreco($preco)
+        {
             $this->preco = $preco;
         }
-
-        public function getDescricao(){
+        /**@return int Descrição do produto*/
+        public function getDescricao()
+        {
             return $this->descricao;
         }
-        public function setDescricao($descricao){
+        /**@param string atribuir a variável descricao*/
+        public function setDescricao($descricao)
+        {
             $this->descricao = $descricao;
         }
-
-        public function getQuantidade(){
+        /**@return int Quantidade de produtos*/
+        public function getQuantidade()
+        {
             return $this->quantidade;
         }
-        public function setQuantidade($quantidade){
+        /**@param int atribuir a variável quantidade*/
+        public function setQuantidade($quantidade)
+        {
             $this->quantidade = $quantidade;
         }
-
-        public function getCategoria(){
+        /**@return object Código da categoria do produto*/
+        public function getCategoria()
+        {
             return $this->categoria;
         }
-        public function setCategoria($categoria){
+        /**@param object atribuir a variável categoria*/
+        public function setCategoria($categoria)
+        {
             $this->categoria = $categoria;
         }
         //
 
+        /**
+         * <b>Listar as categorias:</b>
+         * Realizará uma busca das categorias do produto já cadastradas
+         * @return object Categorias do produto
+         * @return null
+         */
         public function listarCategorias(){
             try {
                 $sql = "SELECT prod.codigo as codigo_produto, cat.nome as categoria FROM produto prod INNER JOIN produto_categoria prod_cat on prod.codigo = prod_cat.codigo_produto INNER JOIN categoria cat on cat.codigo = prod_cat.codigo_categoria";
@@ -85,6 +130,13 @@
             }
         }
 
+        /**
+         * <b>Buscar categorias:</b>
+         * Realizará uma busca das categorias de um produto específico
+         * @param int Código do produto
+         * @return object Categorias do produto
+         * @return null
+         */        
         public function buscarCategorias($id)
         {
             try {
