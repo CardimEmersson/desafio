@@ -8,7 +8,7 @@
 Tabela de conteúdos
 =================
 <!--ts-->
-   * [tecnologias](#tecnologias)
+   * [Tecnologias](#tecnologias)
    * [Pré Requisitos](#pré-requisitos)
    * [Como usar](#como-usar)
    * [Versões](#versões)
