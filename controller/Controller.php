@@ -4,29 +4,20 @@
 	 * Essa é uma classe que tem como objetivo realizar controle 
      * das requisições feitas pelo usuario na aplicação.
 	 * @author Emersson cardim
-	 * @copyright (c) 2020, Emersson C. Mota
+	 * @copyright (c) 2021, Emersson C. Mota
 	 * @access public
 	 * 
 	 */
-    include_once 'ProdutoController.php';
-    include_once 'CategoriaController.php';
-    include_once 'LogController.php';
+    include_once 'AgendaController.php';
     
-
     class Controller
     {
-        /**@var object Instância da classe produtoController */
-        private $produtoController;
-        /**@var object Instância da classe categoriaController */
-        private $categoriaController;
-        /**@var object Instância da classe logController */
-        private $logController;
+        /**@var object Instância da classe agendaController */
+        private $agendaController;
         
         public function __construct()
         {
-            $this->produtoController = new ProdutoController();
-            $this->categoriaController = new CategoriaController();
-            $this->logController = new LogController();
+            $this->agendaController = new AgendaController();
         }
         
         /**
@@ -39,99 +30,47 @@
         }
 
         /**
-         * <b>Produtos:</b>
-         * Realizará a chamada para página de exibição dos produtos e 
-         * irá controlar as requisições referentes ao produto
+         * <b>Agendas:</b>
+         * Realizará a chamada para página de exibição das agendas e 
+         * irá controlar as requisições referentes a agenda
          */
-        public function produtos()
+        public function agendas()
         {
             if (isset($_REQUEST["metodo"])){
                 $metodo = $_REQUEST["metodo"];
 
                 switch ($metodo) {
-                    case 'criarProduto' :
-                        $this->produtoController->criarProduto();
+                    case 'criarAgenda' :
+                        $this->agendaController->criarAgenda();
                     break;
-                    case 'deletarProduto':
-                        $this->produtoController->deletarProduto();
+                    case 'deletarAgenda':
+                        $this->agendaController->deletarAgenda();
                         break;
-                    case 'alterarProduto':
-                        $this->produtoController->alterarProduto();
+                    case 'alterarAgenda':
+                        $this->agendaController->alterarAgenda();
                         break;
-                    case 'cadastrarProduto':
-                        $this->produtoController->cadastrarProduto();
+                    case 'cadastrarAgenda':
+                        $this->agendaController->cadastrarAgenda();
                     break;
-                    case 'atualizarProduto':
-                        $this->produtoController->atualizarProduto();
+                    case 'atualizarAgenda':
+                        $this->agendaController->atualizarAgenda();
                     break;
-                    case 'deletarProduto':
-                        $this->produtoController->deletarProduto();
+                    case 'deletarAgenda':
+                        $this->agendaController->deletarAgenda();
+                    break;
+                    case 'criarXml':
+                        $this->agendaController->criarXml();
+                    break;
+                    case 'criarAgendaXml':
+                        $this->agendaController->criarAgendaXml();
                     break;
                     default:
-                        $this->produtoController->exibirProdutos();
+                        $this->agendaController->exibirAgendas();
                         break;
                 }
             } else {
-                $this->produtoController->exibirProdutos();
+                $this->agendaController->exibirAgendas();
             }
-        }
-
-        /**
-         * <b>Categorias:</b>
-         * Realizará a chamada para página de exibição das categorias e 
-         * irá controlar as requisições referentes a categoria
-         */
-        public function categorias()
-        {
-            if (isset($_REQUEST["metodo"])) {
-                $metodo = $_REQUEST["metodo"];
-
-                switch ($metodo) {
-                    case 'criarCategoria' :
-                        $this->categoriaController->criarCategoria();
-                    break;
-                    case 'deletarCategoria':
-                        $this->categoriaController->deletarCategoria();
-                        break;
-                    case 'alterarCategoria':
-                        $this->categoriaController->alterarCategoria();
-                        break;
-                        case 'cadastrarCategoria':
-                            $this->categoriaController->cadastrarCategoria();
-                        break;
-                        case 'atualizarCategoria':
-                            $this->categoriaController->atualizarCategoria();
-                        break;
-                        case 'deletarCategoria':
-                            $this->categoriaController->deletarCategoria();
-                        break;
-                    default:
-                        $this->categoriaController->exibirCategorias();
-                        break;
-                }
-            } else {
-                $this->categoriaController->exibirCategorias();
-            }
-        }
-
-        /**
-         * <b>Log:</b>
-         * Realizará a chamada para página de exibição dos logs de ações
-         */
-        public function log()
-        {
-            if (isset($_REQUEST["metodo"])) {
-                $metodo = $_REQUEST["metodo"];
-                
-                switch ($metodo) {
-                    case 'exibirLogs':
-                        $this->logController->exibirLogs();
-                        break;
-                }
-            } else {
-                $this->logController->exibirLogs();
-            }
-
         }
 
     }

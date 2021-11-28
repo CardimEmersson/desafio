@@ -27,7 +27,7 @@
 		{	
 			if (!isset(self::$pdo)) {
 				try {
-					self::$pdo = new PDO('mysql:host=localhost; dbname=desafio_iboss', 'root', ''); 
+					self::$pdo = new PDO('mysql:host=mysql.mps.kinghost.net; dbname=mps', 'mps', 'ads2021'); 
 					self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 					self::$pdo->exec('set names utf8');
 					return self::$pdo;

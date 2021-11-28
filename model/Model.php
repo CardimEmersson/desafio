@@ -4,7 +4,7 @@
 	 * Essa é uma classe genérica que tem como objetivo realizar a manipulação dos dados 
      * 
 	 * @author Emersson cardim
-	 * @copyright (c) 2020, Emersson C. Mota
+	 * @copyright (c) 2021, Emersson C. Mota
 	 * @access public
 	 * 
 	 */
@@ -117,6 +117,7 @@
 		public function alterar($tabela, $campos, $coluna, $dado)
 		{
 			$sql = "UPDATE $tabela SET $campos WHERE $coluna = $dado";
+
 			try{
 				$stmt = $this->pdo->prepare($sql);
 				$stmt->execute();
